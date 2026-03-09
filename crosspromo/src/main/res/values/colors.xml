@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="crosspromo_title_text">#1A1A2E</color>
+    <color name="crosspromo_description_text">#6B7280</color>
+    <color name="crosspromo_label_text">#9CA3AF</color>
+    <color name="crosspromo_accent">#2563EB</color>
+    <color name="crosspromo_bg_fill">#FFFFFF</color>
+    <color name="crosspromo_bg_stroke">#E5E7EB</color>
+    <color name="crosspromo_icon_bg_fill">#F9FAFB</color>
+</resources>

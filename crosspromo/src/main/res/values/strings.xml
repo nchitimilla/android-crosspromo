@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="crosspromo_install">Try It</string>
+    <string name="crosspromo_suggested">Suggested for you</string>
+</resources>
