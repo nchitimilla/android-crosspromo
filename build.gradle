@@ -1,16 +1,25 @@
-buildscript {
-    repositories {
-        google()
-        mavenCentral()
+plugins {
+    id 'com.android.library'
+}
+
+android {
+
+    namespace "com.nchitimilla.crosspromo"
+
+    compileSdk 34
+
+    defaultConfig {
+        minSdk 21
+        targetSdk 34
     }
-    dependencies {
-        classpath 'com.android.tools.build:gradle:8.2.2'
+
+    buildTypes {
+        release {
+            minifyEnabled false
+        }
     }
 }
 
-allprojects {
-    repositories {
-        google()
-        mavenCentral()
-    }
+dependencies {
+
 }

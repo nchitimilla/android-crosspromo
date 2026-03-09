@@ -10,6 +10,15 @@ import java.util.List;
 
 public class CrossPromoRepository {
 
+    private static final String FALLBACK_JSON = "["
+            + "{\"name\":\"SnapHome\","
+            + "\"description\":\"Warranty Tracker\","
+            + "\"package\":\"com.nchitimilla.snaphome\","
+            + "\"icon\":\"https://nchitimilla.github.io/icons/snaphome.png\","
+            + "\"priority\":10,"
+            + "\"enabled\":true}"
+            + "]";
+
     public static List<HouseAd> getApps(Context context) {
 
         List<HouseAd> apps = new ArrayList<>();
@@ -18,7 +27,9 @@ public class CrossPromoRepository {
 
             String json = CrossPromoCache.get(context);
 
-            if (json == null) return apps;
+            if (json == null) {
+                json = FALLBACK_JSON;
+            }
 
             JSONArray array = new JSONArray(json);
 

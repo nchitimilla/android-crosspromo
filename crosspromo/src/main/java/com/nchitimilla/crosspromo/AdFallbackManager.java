@@ -1,8 +1,6 @@
 package com.nchitimilla.crosspromo;
 
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -10,16 +8,22 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.io.InputStream;
-import java.net.URL;
+import com.bumptech.glide.Glide;
 
 public class AdFallbackManager {
+
+    private static final String TAG = "AdFallbackManager";
 
     public static void showCrossPromo(Context context, FrameLayout container) {
 
         HouseAd ad = CrossPromoManager.getBestAd(context);
 
-        if (ad == null) return;
+        if (ad == null) {
+            android.util.Log.w(TAG, "No cross-promo ad available");
+            return;
+        }
+
+        android.util.Log.d(TAG, "Showing cross-promo for: " + ad.getName());
 
         View banner = LayoutInflater.from(context)
                 .inflate(R.layout.cross_promo_banner, container, false);
@@ -36,29 +40,19 @@ public class AdFallbackManager {
                 CrossPromoManager.openPlayStore(context, ad.getPackageName())
         );
 
-        loadIcon(icon, ad.getIconUrl());
+        // Default icon while loading
+        icon.setImageResource(android.R.drawable.sym_def_app_icon);
+
+        // Glide handles SSL + caching + threading
+        Glide.with(context)
+                .load(ad.getIconUrl())
+                .placeholder(android.R.drawable.sym_def_app_icon)
+                .error(android.R.drawable.sym_def_app_icon)
+                .into(icon);
 
         container.removeAllViews();
         container.addView(banner);
-
-    }
-
-    private static void loadIcon(ImageView view, String url) {
-
-        new Thread(() -> {
-
-            try {
-
-                InputStream stream = new URL(url).openStream();
-
-                Bitmap bmp = BitmapFactory.decodeStream(stream);
-
-                view.post(() -> view.setImageBitmap(bmp));
-
-            } catch (Exception ignored) {}
-
-        }).start();
-
+        container.setVisibility(View.VISIBLE);
     }
 
 }
