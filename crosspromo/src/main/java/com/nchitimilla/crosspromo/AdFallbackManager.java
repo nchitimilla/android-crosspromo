@@ -3,8 +3,8 @@ package com.nchitimilla.crosspromo;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -14,7 +14,7 @@ public class AdFallbackManager {
 
     private static final String TAG = "AdFallbackManager";
 
-    public static void showCrossPromo(Context context, FrameLayout container) {
+    public static void showCrossPromo(Context context, ViewGroup container) {
 
         HouseAd ad = CrossPromoManager.getBestAd(context);
 
