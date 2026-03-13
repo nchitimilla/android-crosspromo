@@ -2,24 +2,9 @@ plugins {
     id 'com.android.library' version '8.4.1' apply false
 }
 
-android {
-
-    namespace "com.nchitimilla.crosspromo"
-
-    compileSdk 34
-
-    defaultConfig {
-        minSdk 21
-        targetSdk 34
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
     }
-
-    buildTypes {
-        release {
-            minifyEnabled false
-        }
-    }
-}
-
-dependencies {
-
 }
