@@ -6,5 +6,5 @@ package com.nchitimilla.crosspromo;
 public class CrossPromoConfig {
 
     /** Remote URL for the cross-promo ad catalogue JSON. */
-    public static final String JSON_URL = "https://nchitimilla.github.io/apps.json";
+    public static final String JSON_URL = "http://nchitimilla.github.io/apps.json";
 }
